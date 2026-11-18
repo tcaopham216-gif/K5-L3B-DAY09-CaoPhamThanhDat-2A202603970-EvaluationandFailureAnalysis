@@ -5,7 +5,7 @@ import copy
 import pytest
 
 from lab8.shapes import SHAPES
-from lab9 import gate, stats
+from lab9 import evalset, gate, stats
 from lab9.eval import load_spec, make_task, load_world
 from lab9.graders import ReplyAmountCorrect
 from lab9.trace_case import investigate
@@ -13,6 +13,16 @@ from lab9.variant_agent import make_shape
 from tests.test_lab9_graders import ctx
 
 pytestmark = pytest.mark.student
+
+
+def test_lab9_evalset_sha_ignores_line_endings(tmp_path):
+    path = tmp_path / "items.jsonl"
+    path.write_bytes(b'{"item_id":"E-001"}\r\n')
+    baseline_sha = evalset.sha12(path)
+    path.write_bytes(b'{"item_id":"E-001"}\n')
+    assert evalset.sha12(path) == baseline_sha
+    path.write_bytes(b'{"item_id":"E-002"}\n')
+    assert evalset.sha12(path) != baseline_sha
 
 
 def test_lab9_ticket_override_is_first_wrong_step():
