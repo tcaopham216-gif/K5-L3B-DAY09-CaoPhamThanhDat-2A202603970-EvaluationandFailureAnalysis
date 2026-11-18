@@ -1,7 +1,6 @@
 """Regression cases from traces and report-integrity boundaries."""
 
 import copy
-from pathlib import Path
 
 import pytest
 
