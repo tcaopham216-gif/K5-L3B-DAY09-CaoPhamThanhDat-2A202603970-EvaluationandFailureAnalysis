@@ -64,7 +64,7 @@ python -m lab9.mutation --spec config/metric_spec_v2.yaml --baseline reports/bas
 
 Baseline phải được script sinh và lưu trên nhánh được bảo vệ sau khi duyệt, có cùng eval-set SHA và phủ đủ item × seed. Khi so spec cần truyền base-spec đáng tin cậy để áp dụng ratchet. Không sửa report tay, không loại trial lỗi, không đổi slice hay seed để làm gate xanh.
 
-Exit 1 dừng merge. Eval owner Cao Phạm Thành Đạt kiểm trace, nhãn, grader và thay đổi tác nhân rồi chạy lại. Nếu cần ngoại lệ, Product và eval owner phải duyệt rõ lý do, bằng chứng, thời hạn và phạm vi trong PR trước khi merge. Hiện chưa có ngoại lệ hoặc phê duyệt Product nào được cấp. Workflow có sẵn kiểm core và v2 khi có baseline v2, CI trên GitHub còn chờ PR được chủ repo duyệt.
+Exit 1 dừng merge. Eval owner Cao Phạm Thành Đạt kiểm trace, nhãn, grader và thay đổi tác nhân rồi chạy lại. Nếu cần ngoại lệ, Product và eval owner phải duyệt rõ lý do, bằng chứng, thời hạn và phạm vi trong PR trước khi merge. Workflow kiểm Core và v2 khi có baseline v2. Kết quả chạy được lưu trong tab Actions của bản fork.
 
 ## 6. Bằng chứng và rủi ro mở
 
@@ -85,5 +85,5 @@ Thêm item, sửa nhãn hay slice cần tăng eval_set_version, ghi nguồn và 
 
 | Vai trò | Người phụ trách | Trạng thái |
 | --- | --- | --- |
-| Product / chủ repo | Cao Phạm Thành Đạt | Chờ duyệt bài và PR |
+| Product / chủ repo | Cao Phạm Thành Đạt | Đã merge PR Lab 9 |
 | Eval owner | Cao Phạm Thành Đạt | Đã chạy kiểm tra local ngày 18/11/2026, chưa thay thế review/CI |
