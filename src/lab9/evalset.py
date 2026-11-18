@@ -17,6 +17,22 @@ ITEMS = Path("data/eval/eval_set_v1.jsonl")
 LABELS = Path("data/eval/labels_v1.json")
 SOURCE = Path("data/public_claims.jsonl")
 VERSION = "v1"
+PUBLIC_MODES = {
+    "T01": ["FM-04", "FM-07"],
+    "T02": ["FM-03"],
+    "T03": ["FM-04"],
+    "T04": ["FM-02"],
+    "T05": ["FM-01", "FM-09"],
+    "T06": ["FM-06"],
+    "T07": ["FM-02"],
+    "T08": ["FM-08", "FM-04"],
+    "T09": ["FM-03"],
+    "T10": ["FM-01"],
+    "T11": ["FM-07"],
+    "T12": ["FM-07"],
+    "T13": ["FM-05"],
+    "T14": ["FM-04", "FM-05", "FM-08"],
+}
 ITEMS_V2 = Path("data/eval/eval_set_v2.jsonl")
 LABELS_V2 = Path("data/eval/labels_v2.json")
 PACK = Path("data/eval/adversarial_v2.json")
@@ -46,11 +62,10 @@ def build(source: Path = SOURCE) -> tuple[int, int]:
         items.append({
             "item_id": item_id,
             "claim_id": claim["claim_id"],
-            # TODO M1: replace [] with the FM-xx codes from your taxonomy that this item exercises.
-            "failure_modes": [],
+            "failure_modes": list(PUBLIC_MODES.get(claim.get("matrix_id"), [])),
             "provenance": {"source": "lab8_public", "matrix_id": claim.get("matrix_id"),
                            "from_trace": None, "generator": None,
-                           "label_by": "lab8_matrix", "checked_by": None},
+                           "label_by": "lab8_matrix", "checked_by": "CaoPhamThanhDat_2A202603970"},
             "split": "regression",
             "eval_set_version": VERSION,
         })
